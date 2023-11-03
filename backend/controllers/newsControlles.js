@@ -6,6 +6,8 @@ const setNoticia = asyncHandler( async (req, res) => {
         title: req.body.title,
         subtitle: req.body.subtitle,
         content: req.body.content,
+        image: req.body.image,
+        image2: req.body.image2,
         author: req.body.author
     })
 
