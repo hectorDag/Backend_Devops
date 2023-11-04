@@ -13,20 +13,21 @@ const newsSchema = mongoose.Schema({
         type: String,
         required: [true, 'Teclea el contenido']
     },
-    image: {
-        type: String,
-        required: [true, 'Proporciona la URL de la imagen']
-    },
-    image2: {
-        type: String,
-        required: [true, 'Proporciona la URL de la Segunda imagen']
+    imgUrl: {
+        type: String
     },
     author: {
         type: String,
-        required: [true, 'Tecle Anonimo o el nombre del autor'],
+        required: [true, 'Tecle Anonimo o el nombre del autor']
     }
 },{
     timestamps: true
 })
+
+newsSchema.methods.setImgUrl = function setImgUrl (filename) {
+ const PORT = process.env.PORT
+ const APP_HOST = process.env.APP_HOST
+ this.imgUrl = `${APP_HOST}:${PORT}/public/${filename}`
+}
 
 module.exports = mongoose.model('New', newsSchema)

@@ -15,6 +15,7 @@ app.use(cors())
 
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
+app.use('/public', express.static(`${__dirname}/storage/imgs`))
 
 app.use('/api/noticias', require('./routes/newsRoutes'))
 app.use('/api/users', require('./routes/usersRoutes'))
